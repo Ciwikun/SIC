@@ -26,11 +26,14 @@ void loop() {
     
     gyro.update();
     Serial3.read();
-    Serial3.print("X:");
+
+    Serial3.print(" ");
     Serial3.print(agx);
-    Serial3.print(" Y:");
+    Serial3.print(" ");
     Serial3.print(agy);
-    Serial3.print(" Z:");
-    Serial3.println(agz);
+    Serial3.print(" ");
+    Serial3.print(agz);
+    Serial3.println(" ");
+    
     delay(100);
 }
