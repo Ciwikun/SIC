@@ -6,6 +6,7 @@ PFont f;
 Serial myPort;    // The serial port
 String inString;  // Input string from serial port
 int lf = 10;      // ASCII linefeed 
+PShape head;
 
 float initAgx;
 float initAgy;
@@ -21,6 +22,7 @@ void setup()
 { 
   size(800, 600, P3D); 
   f=loadFont("TimesNewRomanPS-BoldMT-48.vlw");  
+  head = loadShape("GoodBieber.obj");
   
   initSerial();
   initMPU();
@@ -52,7 +54,7 @@ void draw()
   textAlign(CENTER);
   text("X: " + String.format("%.2f", agx) + " Y: " + String.format("%.2f", agy) + " Z: "+ String.format("%.2f", agz), width/2, 50); 
   
-  drawCube(agx, agy, agz);
+  drawHead(agx, agy, agz);
   
   
   arduino.servoWrite(8, constrain((int)((agz)*1.3)+90, 0, 180));
@@ -183,4 +185,16 @@ void drawCube(float agx, float agy, float agz)
   buildBoxShape();
 
   popMatrix();
+}
+
+public void drawHead(float agx, float agy, float agz) {
+  background(0);
+  lights();
+  
+  translate(width/2, height/2+25, -200);
+  rotateX((agy)/180.0*PI);
+  rotateY((agz)/180.0*PI);
+  rotateZ((agx)/180.0*PI);
+  
+  shape(head);
 }
