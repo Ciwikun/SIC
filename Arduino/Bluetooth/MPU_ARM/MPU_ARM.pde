@@ -22,7 +22,7 @@ void setup()
 { 
   size(800, 600, P3D); 
   f=loadFont("TimesNewRomanPS-BoldMT-48.vlw");  
-  head = loadShape("GoodBieber.obj");
+  head = loadShape("head/GoodBieber.obj");
   
   initSerial();
   initMPU();
